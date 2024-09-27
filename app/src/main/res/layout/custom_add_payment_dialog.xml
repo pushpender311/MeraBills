@@ -1,0 +1,221 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/white_rect_12dp"
+        android:elevation="5dp"
+        android:padding="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <TextView
+                android:id="@+id/textAddPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/add_payment"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/editTextAmount"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/grey_rect_outline_12dp"
+                android:hint="@string/enter_amount"
+                android:inputType="number"
+                android:paddingHorizontal="15dp"
+                android:textColor="@color/dull_black"
+                android:textSize="14sp"
+                app:layout_constraintTop_toBottomOf="@id/textAddPayment" />
+
+            <Spinner
+                android:id="@+id/spinner"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/grey_rect_outline_12dp"
+                android:entries="@array/payment_methods"
+                app:layout_constraintTop_toBottomOf="@id/editTextAmount" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageViewArrow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                app:layout_constraintBottom_toBottomOf="@id/spinner"
+                app:layout_constraintEnd_toEndOf="@id/spinner"
+                app:layout_constraintTop_toTopOf="@id/spinner"
+                app:srcCompat="@drawable/baseline_keyboard_arrow_down_24" />
+
+            <View
+                android:layout_width="1dp"
+                android:layout_height="0dp"
+                android:layout_marginEnd="10dp"
+                android:background="@color/black"
+                app:layout_constraintBottom_toBottomOf="@id/spinner"
+                app:layout_constraintEnd_toStartOf="@id/imageViewArrow"
+                app:layout_constraintTop_toTopOf="@id/spinner" />
+
+            <!--Bank Details-->
+            <LinearLayout
+                android:id="@+id/linearBankDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/buttonAddPayment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner">
+
+                <EditText
+                    android:id="@+id/editTextBankName"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:background="@drawable/grey_rect_outline_5dp"
+                    android:hint="@string/enter_bank_name"
+                    android:inputType="textCapWords"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="@color/dull_black"
+                    android:textSize="14sp" />
+
+                <EditText
+                    android:id="@+id/editTextIfscCode"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/grey_rect_outline_5dp"
+                    android:hint="@string/ifsc_code"
+                    android:inputType="text"
+                    android:maxLength="10"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="@color/dull_black"
+                    android:textSize="14sp" />
+
+            </LinearLayout>
+
+            <!--Credit card-->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/linearCardDetails"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="15dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/buttonAddPayment"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner">
+
+                <EditText
+                    android:id="@+id/editTextCardNumber"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/grey_rect_outline_5dp"
+                    android:hint="@string/enter_credit_card_numbers"
+                    android:inputType="number"
+                    android:maxLength="16"
+                    android:paddingHorizontal="15dp"
+                    android:textColor="@color/dull_black"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <EditText
+                    android:id="@+id/editTextExpireDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/grey_rect_outline_5dp"
+                    android:hint="@string/expire_date"
+                    android:inputType="date"
+                    android:maxLength="5"
+                    android:paddingHorizontal="20dp"
+                    android:textColor="@color/dull_black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/editTextCardNumber" />
+
+                <EditText
+                    android:id="@+id/editTextCvv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="30dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/grey_rect_outline_5dp"
+                    android:hint="@string/cvv"
+                    android:inputType="date"
+                    android:paddingHorizontal="30dp"
+                    android:textColor="@color/dull_black"
+                    android:textSize="14sp"
+                    app:layout_constraintStart_toEndOf="@id/editTextExpireDate"
+                    app:layout_constraintTop_toBottomOf="@id/editTextCardNumber" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!--UPI Details-->
+            <EditText
+                android:id="@+id/editTextUpiId"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginTop="15dp"
+                android:layout_marginBottom="15dp"
+                android:background="@drawable/grey_rect_outline_5dp"
+                android:hint="@string/upi_id"
+                android:inputType="number"
+                android:maxLength="16"
+                android:paddingHorizontal="15dp"
+                android:textColor="@color/dull_black"
+                android:textSize="14sp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toTopOf="@id/buttonAddPayment"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/spinner" />
+
+            <TextView
+                android:id="@+id/buttonAddPayment"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="20dp"
+                android:background="@drawable/button_background"
+                android:enabled="true"
+                android:gravity="center"
+                android:paddingHorizontal="20dp"
+                android:text="@string/add"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearBankDetails" />
+
+            <TextView
+                android:id="@+id/textCancel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="30dp"
+                android:text="@string/cancel"
+                app:layout_constraintBottom_toBottomOf="@id/buttonAddPayment"
+                app:layout_constraintEnd_toStartOf="@id/buttonAddPayment"
+                app:layout_constraintTop_toTopOf="@id/buttonAddPayment" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </FrameLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>
